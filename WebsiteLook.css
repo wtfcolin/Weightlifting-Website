@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#login-page, #dashboard {
+    text-align: center;
+    margin: 20px;
+}
+
+#login-form {
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+}
+
+.tab-navigation {
+    text-align: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.tab-navigation a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    background-color: #666;
+}
+
+.tab-navigation a:hover {
+    background-color: #555;
+}
+
+
