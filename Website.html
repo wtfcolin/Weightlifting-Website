@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>Weightlifting App</title>
-    <link rel="stylesheet" type="text/css" href="bootStrapPurpleTheme.css">
-    <link rel="stylesheet" type="text/css" href="ThemeMin.css">
+    <link rel="stylesheet" type="text/css" href="WebsiteLook.css">
     <style>
         .container {
             display: flex;
@@ -29,6 +28,13 @@
     <!-- Dashboard Page -->
     <div id="dashboard" style="display: none;" class="container">
         <h1>Welcome (Username)</h1>
+        <!-- Tabs for navigation -->
+        <div class="tab-navigation">
+            <a href="Customize.html">Customize Workouts</a>
+            <a href="Calendar.html">Calendar</a>
+            <a href="Website.html">Home</a>
+            <a href="Profile.html">Profile</a>
+        </div>
         <div id="calendar">
             <!-- Calendar content will go here -->
             
@@ -36,16 +42,7 @@
             <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js'></script>
         </div>
 
-        <!-- Tabs for navigation -->
-        <div class="tab-navigation">
-            <a href="Customize.html">Customize Workouts</a>
-            <a href="Calendar.html">Calendar</a>
-            <a href="Main.html">Home</a>
-            <a href="Profile.html">Profile</a>
-        </div>
     </div>
-
     <script src="WebsiteFunction.js"></script>
-    <script src="scripts.js"></script>
 </body>
 </html>
