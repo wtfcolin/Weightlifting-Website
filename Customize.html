@@ -39,6 +39,67 @@
             justify-content: space-between;
             margin-bottom: 10px;
         }
+
+        .dropdown-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .dropdown {
+            flex-grow: 1;
+            position: relative;
+            display: inline-block; /* Keeps dropdown inline */
+            margin-right: 10px; /* Adds spacing between dropdowns */
+        }
+
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9fa;
+            width: 100%;
+            left: 0;
+            right: 0;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content label {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            margin: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            padding: 12px 40px;
+        }
+
+        .form-check-input {
+            margin-top: 0;
+            margin-right: 10px; /* Adjust as needed for spacing between checkbox and label */
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -48,17 +109,79 @@
         <!-- Workout Options -->
         <div id="workout-options">
             <h2>Choose Your Exercises</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="exercise1" value="Exercise 1">
-                        <label class="form-check-label" for="exercise1">
-                            Exercise 1
-                        </label>
+            <div class="dropdown-container">
+                <!-- Back Dropdown -->
+                <div class="dropdown">
+                    <button class="dropbtn">Back</button>
+                    <div class="dropdown-content">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chest-exercise1" value="Bench Press">
+                            <label class="form-check-label" for="chest-exercise1">Bench Press</label>
+                        </div>
                     </div>
-                    <!-- Add more exercises as needed -->
                 </div>
-                <!-- Add more columns as needed -->
+            
+                <!-- Chest Dropdown -->
+                <div class="dropdown">
+                    <button class="dropbtn">Chest</button>
+                    <div class="dropdown-content">
+                        <!-- Chest Exercises -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chest-benchpress" value="Bench Press">
+                            <label class="form-check-label" for="chest-benchpress">Bench Press</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chest-exercise1" value="Bench Press">
+                            <label class="form-check-label" for="chest-exercise1">Bench Press</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chest-exercise1" value="Bench Press">
+                            <label class="form-check-label" for="chest-exercise1">Bench Press</label>
+                        </div>
+                        <!-- More chest exercises -->
+                    </div>
+                </div>
+            
+                <!-- Abs Dropdown -->
+                <div class="dropdown">
+                    <button class="dropbtn">Abs</button>
+                    <div class="dropdown-content">
+                        <!-- Abs Exercises -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="abs-plank" value="Plank">
+                            <label class="form-check-label" for="abs-plank">Plank</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="abs-situp" value="Sit-Up">
+                            <label class="form-check-label" for="abs-situp">Sit-Up</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="abs-hangingkneeraise" value="Hanging Knee Raise">
+                            <label class="form-check-label" for="abs-hangingkneeraise">Hanging Knee Raise</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="abs-mountainclimbers" value="Mountain Climbers">
+                            <label class="form-check-label" for="abs-mountainclimbers">Mountain Climbers</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="abs-cablecrunch" value="Cable Crunch">
+                            <label class="form-check-label" for="abs-cablecrunch">Cable Crunch</label>
+                        </div>
+                        <!-- More abs exercises -->
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Legs</button>
+                    <div class="dropdown-content">
+                        <!-- Abs Exercises -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="legs-exercise1" value="Squats">
+                            <label class="form-check-label" for="abs-exercise1">Squats</label>
+                        </div>
+                        <!-- More abs exercises -->
+                    </div>
+                </div>
+                <!-- More muscle groups can be added in a similar fashion -->
             </div>
         </div>
 
