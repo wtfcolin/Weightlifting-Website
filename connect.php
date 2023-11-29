@@ -1,12 +1,13 @@
 <?php
-$host = 'lifting-app';
-$username = 'your_username';
-$password = 'your_password';
-$database = '';
+$user = 'carlsonca20';
+$pass = 'cc7893';
+$dsn = 'mysql:host=washington.uww.edu;dbname=lifting-app';
 
-$conn = new mysqli($host, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
+try
+{
+    $db = new PDO($dsn, $user, $pass);
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
 }
 ?>
