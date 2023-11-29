@@ -33,6 +33,7 @@
         $columns = array(); // define an array of column labels for a table header
 
         try {
+            switch ($mode) {
               case "login":
               // read login information
               $username = (isset($_POST["username"])) ? $_POST["username"] : "-1";
@@ -64,7 +65,7 @@
               }
               break;
 
-
+            }
     }//end of switch statements
     ?>
 
