@@ -1,225 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Workout Calendar</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="WebsiteLook.css">
     <style>
-        body {
-            background-color: #f8f9fa; /* Bootstrap default background color */
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        #calendar {
-            background-color: #ffffff; /* Warhawk White */
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        #workout-options {
-            margin-top: 20px;
-        }
-
-        #selected-exercises {
-            margin-top: 20px;
-        }
-
-        #selected-exercises ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .exercise-list {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .dropdown-container {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .dropdown {
-            flex-grow: 1;
-            position: relative;
-            display: inline-block; /* Keeps dropdown inline */
-            margin-right: 10px; /* Adds spacing between dropdowns */
-        }
-
-
-        .dropbtn {
-            background-color: #4CAF50;
+        /* Style the buttons that are used to open and close the accordion panel */
+        .accordion {
+            background-color: #400a53;
             color: white;
-            padding: 10px;
-            width: 100%;
-            font-size: 16px;
-            border: none;
             cursor: pointer;
-            text-align: left;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9fa;
+            padding: 18px;
             width: 100%;
-            left: 0;
-            right: 0;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
         }
 
-        .dropdown-content label {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            margin: 0;
+        /* Add a background color to the button if it is clicked on (add the .active class with JS),
+        and when you move the mouse over it (hover) */
+        .active, .accordion:hover {
+            background-color: #501169;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
+        /* Style the accordion panel. Note: hidden by default */
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
         }
 
-        .form-check {
-            display: flex;
-            align-items: center;
-            padding: 12px 40px;
+        /* Style the buttons inside the accordion panel */
+        .exercise-accordion {
+            background-color: #400a53;
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
         }
 
-        .form-check-input {
-            margin-top: 0;
-            margin-right: 10px; /* Adjust as needed for spacing between checkbox and label */
-            margin-bottom: 0;
+        /* Add a background color to the button inside the accordion if it is clicked on (add the .active-exercise class with JS),
+        and when you move the mouse over it (hover) */
+        .active-exercise, .exercise-accordion:hover {
+            background-color: #6e1b94;
+        }
+
+        /* Style the exercise panel inside the accordion. Note: hidden by default */
+        .exercise-panel {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+        }
+
+        /* Style the checkboxes */
+        .exercise-checkbox {
+            margin-right: 10px;
+        }
+
+        /* Style the remove button in the selected exercises list */
+        .remove-button {
+            cursor: pointer;
+            color: red;
+            margin-left: auto;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="text-center">Custom Workout Calendar</h1>
+        <div class="tab-navigation">
+            <a href="Customize.html">Customize Workouts</a>
+            <a href="Calendar.html">Calendar</a>
+            <a href="Website.html">Home</a>
+            <a href="Profile.html">Profile</a>
+        </div>
 
         <!-- Workout Options -->
         <div id="workout-options">
             <h2>Choose Your Exercises</h2>
-            <div class="dropdown-container">
-                <!-- Back Dropdown -->
-                <div class="dropdown">
-                    <button class="dropbtn">Back</button>
-                    <div class="dropdown-content">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="chest-exercise1" value="Bench Press">
-                            <label class="form-check-label" for="chest-exercise1">Bench Press</label>
-                        </div>
-                    </div>
+
+            <!-- Upper Body Dropdown -->
+            <button class="accordion">Upper Body</button>
+            <div class="panel">
+                <!-- Bench Press -->
+                <button class="exercise-accordion">
+                    <input type="checkbox" class="exercise-checkbox" id="upper-benchpress" value="Bench Press"> Bench Press
+                </button>
+                <div class="exercise-panel">
+                    <ul>
+                        <li>Lie on a flat bench with your feet on the ground.</li>
+                        <li>Grip the barbell with hands slightly wider than shoulder-width.</li>
+                        <li>Lower the barbell to your chest and push it back up to the starting position.</li>
+                    </ul>
+                    <a href="https://youtu.be/tuwHzzPdaGc?si=fk4yXFgaHbah7UsV">Tutorial Video</a>
                 </div>
+
+                <!-- Dumbbell Bicep Curls -->
+                <button class="exercise-accordion">
+                    <input type="checkbox" class="exercise-checkbox" id="upper-dumbbellcurls" value="Dumbbell Bicep Curls"> Dumbbell Bicep Curls
+                </button>
+                <div class="exercise-panel">
+                    <ul>
+                        <li>Stand with a dumbbell in each hand, arms fully extended.</li>
+                        <li>Keep your elbows close to your body as you curl the weights towards your shoulders.</li>
+                        <li>Lower the weights back down in a controlled manner.</li>
+                    </ul>
+                    <a href="https://youtu.be/UeleXjsE-98?si=yokLsPqP67qfWG0Y">Tutorial Video</a>
+                </div>
+
+                <!-- Weighted LIYT’s -->
+                <button class="exercise-accordion">
+                    <input type="checkbox" class="exercise-checkbox" id="upper-weightedliyts" value="Weighted LIYT’s"> Weighted LIYT’s (Lateral, Internal, and External Rotation)
+                </button>
+                <div class="exercise-panel">
+                    <ul>
+                        <li>Use resistance bands or cables at shoulder height.</li>
+                        <li>Perform lateral, internal, and external rotations for shoulder strengthening.</li>
+                        <li>Maintain control and focus on the targeted shoulder movements.</li>
+                    </ul>
+                    <a href="https://youtu.be/RpDuA5rUByk?si=PVhIhOhqqyFWzuXv">Tutorial Video</a>
+                </div>
+
+                <!-- Pull-ups -->
+                <button class="exercise-accordion">
+                    <input type="checkbox" class="exercise-checkbox" id="upper-pullups" value="Pull-ups"> Pull-ups
+                </button>
+                <div class="exercise-panel">
+                    <ul>
+                        <li>Hang from a pull-up bar with palms facing away.</li>
+                        <li>Pull your body up until your chin is above the bar.</li>
+                        <li>Lower your body back down with control.</li>
+                    </ul>
+                    <a href="https://youtu.be/poyr8KenUfc?si=1_WZEcmrZ1TeszPq">Tutorial Video</a>
+                </div>
+
+                <!-- Triceps Extension -->
+                <button class="exercise-accordion">
+                    <input type="checkbox" class="exercise-checkbox" id="upper-tricepsextension" value="Triceps Extension"> Triceps Extension
+                </button>
+                <div class="exercise-panel">
+                    <ul>
+                        <li>Use a cable machine with a rope or bar attachment.</li>
+                        <li>Keep elbows close to your head and extend the arms downward.</li>
+                        <li>Return to the starting position with controlled movement.</li>
+                    </ul>
+                    <a href="https://youtu.be/NRENeEgaIgA?si=f3_7FdjFjFbe3PEo">Tutorial Video</a>
+                </div>
+
+                <!-- Overhand/Underhand Band Pull Apart -->
+                <button class="exercise-accordion">
+                    <input type="checkbox" class="exercise-checkbox" id="upper-bandpullapart" value="Overhand/Underhand Band Pull Apart"> Overhand/Underhand Band Pull Apart
+                </button>
+                <div class="exercise-panel">
+                    <ul>
+                        <li>Hold a resistance band with hands either overhand or underhand.</li>
+                        <li>Pull the band apart by moving your hands outward.</li>
+                        <li>Focus on squeezing your shoulder blades together.</li>
+                    </ul>
+                    <a href="https://youtu.be/nMB_zabRo74?si=WmCtVKpBdGDxs0Il">Tutorial Video</a>
+                </div>
+            </div>
+        </div>
             
-                <!-- Chest Dropdown -->
-                <div class="dropdown">
-                    <button class="dropbtn">Chest</button>
-                    <div class="dropdown-content">
-                        <!-- Chest Exercises -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="chest-benchpress" value="Bench Press">
-                            <label class="form-check-label" for="chest-benchpress">Bench Press</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="chest-exercise1" value="Bench Press">
-                            <label class="form-check-label" for="chest-exercise1">Bench Press</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="chest-exercise1" value="Bench Press">
-                            <label class="form-check-label" for="chest-exercise1">Bench Press</label>
-                        </div>
-                        <!-- More chest exercises -->
-                    </div>
-                </div>
+
+         <!-- Lower Body Dropdown -->
+         <button class="accordion">Lower Body</button>
+         <div class="panel">
+             <!-- Front Squat -->
+             <button class="exercise-accordion">
+                 <input type="checkbox" class="exercise-checkbox" id="lower-frontsquat" value="Front Squat"> Front Squat
+             </button>
+             <div class="exercise-panel">
+                 <ul>
+                     <li>Position a barbell on your shoulders, in front of your neck.</li>
+                     <li>Squat down by bending your knees and hips.</li>
+                     <li>Keep your back straight and chest up, then return to the starting position.</li>
+                 </ul>
+                 <a href="https://youtu.be/9xAkoz95IFE?si=O8QAORIKZ4HFnty_">Tutorial Video</a>
+             </div>
+
+             <!-- Back Squat -->
+             <button class="exercise-accordion">
+                 <input type="checkbox" class="exercise-checkbox" id="lower-backsquat" value="Back Squat"> Back Squat
+             </button>
+             <div class="exercise-panel">
+                 <ul>
+                     <li>Place a barbell on your upper back.</li>
+                     <li>Squat down by bending your knees and hips.</li>
+                     <li>Keep your back straight and chest up, then return to the starting position.</li>
+                 </ul>
+                 <a href="https://youtu.be/R2dMsNhN3DE?si=lEyvUzzsyhptbUyJ">Tutorial Video</a>
+             </div>
+
+             <!-- Split Squat -->
+             <button class="exercise-accordion">
+                 <input type="checkbox" class="exercise-checkbox" id="lower-splitsquat" value="Split Squat"> Split Squat
+             </button>
+             <div class="exercise-panel">
+                 <ul>
+                     <li>Stand in a lunge position with one foot forward and one foot back.</li>
+                     <li>Lower your body by bending both knees.</li>
+                     <li>Push through the front foot to return to the starting position.</li>
+                 </ul>
+                 <a href="https://youtu.be/ROlivpkKJ9g?si=CbPKxKNnYQzAgXxi">Tutorial Video</a>
+             </div>
+
+             <!-- Hang Clean/Clean -->
+             <button class="exercise-accordion">
+                 <input type="checkbox" class="exercise-checkbox" id="lower-hangclean" value="Hang Clean/Clean"> Hang Clean/Clean
+             </button>
+             <div class="exercise-panel">
+                 <ul>
+                     <li>Start with a barbell hanging in front of you.</li>
+                     <li>Explosively lift the barbell to shoulder height, either from a hang or the ground.</li>
+                     <li>Catch the barbell in a front squat position.</li>
+                 </ul>
+                 <a href="https://youtu.be/Pz1q5pceH5E?si=o_m6liMLo44oG_wL">Tutorial Video</a>
+             </div>
+
+             <!-- Goblet Squat -->
+             <button class="exercise-accordion">
+                 <input type="checkbox" class="exercise-checkbox" id="lower-gobletsquat" value="Goblet Squat"> Goblet Squat
+             </button>
+             <div class="exercise-panel">
+                 <ul>
+                     <li>Hold a kettlebell or dumbbell close to your chest.</li>
+                     <li>Squat down, keeping your chest up and back straight.</li>
+                     <li>Return to the starting position.</li>
+                 </ul>
+                 <a href="https://youtu.be/5Y3KW5rWMh4?si=a85hdh8SBJ3h_MOG">Tutorial Video</a>
+             </div>
+         </div>
+     </div>
             
-                <!-- Abs Dropdown -->
-                <div class="dropdown">
-                    <button class="dropbtn">Abs</button>
-                    <div class="dropdown-content">
-                        <!-- Abs Exercises -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="abs-plank" value="Plank">
-                            <label class="form-check-label" for="abs-plank">Plank</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="abs-situp" value="Sit-Up">
-                            <label class="form-check-label" for="abs-situp">Sit-Up</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="abs-hangingkneeraise" value="Hanging Knee Raise">
-                            <label class="form-check-label" for="abs-hangingkneeraise">Hanging Knee Raise</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="abs-mountainclimbers" value="Mountain Climbers">
-                            <label class="form-check-label" for="abs-mountainclimbers">Mountain Climbers</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="abs-cablecrunch" value="Cable Crunch">
-                            <label class="form-check-label" for="abs-cablecrunch">Cable Crunch</label>
-                        </div>
-                        <!-- More abs exercises -->
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn">Legs</button>
-                    <div class="dropdown-content">
-                        <!-- Abs Exercises -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="legs-exercise1" value="Squats">
-                            <label class="form-check-label" for="abs-exercise1">Squats</label>
-                        </div>
-                        <!-- More abs exercises -->
-                    </div>
-                </div>
-                <!-- More muscle groups can be added in a similar fashion -->
+
+      <!-- Abs Dropdown -->
+      <button class="accordion">Abs</button>
+      <div class="panel">
+          <!-- Bicycle Crunch -->
+          <button class="exercise-accordion">
+              <input type="checkbox" class="exercise-checkbox" id="abs-bicyclecrunch" value="Bicycle Crunch"> Bicycle Crunch
+          </button>
+          <div class="exercise-panel">
+              <ul>
+                  <li>Lie on your back.</li>
+                  <li>Lift your legs.</li>
+                  <li>Bring one knee toward the opposite elbow while extending the other leg.</li>
+                  <li>Rotate your torso.</li>
+                  <li>Bring the other knee toward the opposite elbow.</li>
+              </ul>
+              <a href="https://youtu.be/vV_sKNCpiVM?si=TqCJP8K9kaSuZaUZ">Tutorial Video</a>
+          </div>
+
+          <!-- V Ups -->
+          <button class="exercise-accordion">
+              <input type="checkbox" class="exercise-checkbox" id="abs-vups" value="V Ups"> V Ups
+          </button>
+          <div class="exercise-panel">
+              <ul>
+                  <li>Lie on your back with arms extended overhead.</li>
+                  <li>Lift your legs and upper body simultaneously.</li>
+                  <li>Form a "V" shape.</li>
+                  <li>Lower back down with control.</li>
+              </ul>
+              <a href="https://youtu.be/lmkw48_CGm0?si=OzHtjBK7f_DlC7Dp">Tutorial Video</a>
+          </div>
+
+          <!-- Superman Holds -->
+          <button class="exercise-accordion">
+              <input type="checkbox" class="exercise-checkbox" id="abs-supermanholds" value="Superman Holds"> Superman Holds
+          </button>
+          <div class="exercise-panel">
+              <ul>
+                  <li>Lie face down.</li>
+                  <li>Extend arms and legs off the ground.</li>
+                  <li>Lift your chest and legs.</li>
+                  <li>Create a slight arch in your back.</li>
+                  <li>Hold the position for a specified time.</li>
+              </ul>
+              <a href="https://youtu.be/tYMHYWVvFjs?si=LW7N3IR2tUp_dY0T">Tutorial Video</a>
+          </div>
+
+          <!-- Front Plank -->
+          <button class="exercise-accordion">
+              <input type="checkbox" class="exercise-checkbox" id="abs-frontplank" value="Front Plank"> Front Plank
+          </button>
+          <div class="exercise-panel">
+              <ul>
+                  <li>Support your body on your forearms and toes.</li>
+                  <li>Keep your body in a straight line from head to heels.</li>
+                  <li>Hold the position, engaging your core.</li>
+              </ul>
+              <a href="https://youtu.be/q4rDeHYMcIg?si=l79dIGAQ1A5aLh9I">Tutorial Video</a>
+          </div>
+
+          <!-- Side Plank -->
+          <button class="exercise-accordion">
+              <input type="checkbox" class="exercise-checkbox" id="abs-sideplank" value="Side Plank"> Side Plank
+          </button>
+          <div class="exercise-panel">
+              <ul>
+                  <li>Support your body on one forearm and the side of your foot.</li>
+                  <li>Keep your body in a straight line from head to heels.</li>
+                  <li>Hold the position on each side, engaging your obliques.</li>
+              </ul>
+              <a href="https://youtu.be/Oe9Tp9SvTCE?si=UwjV8r6ydnAzXSs-">Tutorial Video</a>
+          </div>
+      </div>
+  </div>
+            
+
+            <!-- Selected Exercises -->
+            <div id="selected-exercises">
+                <h2>Selected Exercises</h2>
+                <ul id="selected-exercises-list">
+                    <!-- Selected exercises will be added dynamically here -->
+                </ul>
+                <label for="workoutDate">Workout Date:</label>
+                <input type="date" id="workoutDate">
+                <button id="submitBtn">Add to Calendar</button>
             </div>
         </div>
 
-        <!-- Selected Exercises -->
-        <div id="selected-exercises">
-            <h2>Selected Exercises</h2>
-            <ul id="selected-exercises-list">
-                <!-- Selected exercises will be added dynamically here -->
-            </ul>
-        </div>
-    </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var acc = document.querySelectorAll('.accordion');
+                var exerciseAccordions = document.querySelectorAll('.exercise-accordion');
+                var checkboxes = document.querySelectorAll('.exercise-checkbox');
+                var selectedExercisesList = document.getElementById('selected-exercises-list');
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Event listener for checkbox changes
-            const checkboxes = document.querySelectorAll('.form-check-input');
-            checkboxes.forEach(function (checkbox) {
-                checkbox.addEventListener('change', function () {
-                    updateSelectedExercises();
-                });
-            });
+                for (var i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                            panel.style.display = "none";
+                        } else {
+                            panel.style.display = "block";
+                        }
+                    });
+                }
 
-            // Function to update the selected exercises list
-            function updateSelectedExercises() {
-                const selectedExercisesList = document.getElementById('selected-exercises-list');
-                selectedExercisesList.innerHTML = ''; // Clear the list
+                for (var i = 0; i < exerciseAccordions.length; i++) {
+                    exerciseAccordions[i].addEventListener("click", function () {
+                        this.classList.toggle("active-exercise");
+                        var exercisePanel = this.nextElementSibling;
+                        if (exercisePanel.style.display === "block") {
+                            exercisePanel.style.display = "none";
+                        } else {
+                            exercisePanel.style.display = "block";
+                        }
+                    });
+                }
 
-                checkboxes.forEach(function (checkbox) {
-                    if (checkbox.checked) {
-                        // Add the selected exercise to the list
-                        const exerciseItem = document.createElement('li');
-                        exerciseItem.textContent = checkbox.value;
-                        selectedExercisesList.appendChild(exerciseItem);
+                for (var i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].addEventListener("change", function () {
+                        updateSelectedExercises();
+                    });
+                }
+
+                function updateSelectedExercises() {
+                    selectedExercisesList.innerHTML = '';
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            const exerciseItem = document.createElement('li');
+                            const removeButton = document.createElement('span');
+                            removeButton.className = 'remove-button';
+                            removeButton.textContent = 'Remove';
+                            removeButton.addEventListener('click', function () {
+                                this.parentElement.remove();
+                            });
+                            exerciseItem.textContent = checkboxes[i].value;
+                            exerciseItem.appendChild(removeButton);
+                            selectedExercisesList.appendChild(exerciseItem);
+                        }
                     }
-                });
-            }
+                }
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+            const submitButton = document.getElementById('submitBtn');
+            submitButton.addEventListener('click', saveAndRedirect);
         });
-    </script>
+
+        function saveAndRedirect() {
+    // Get selected exercises
+    const selectedExercisesList = document.getElementById('selected-exercises-list');
+    const selectedExercisesItems = selectedExercisesList.querySelectorAll('li');
+    const selectedExercises = Array.from(selectedExercisesItems).map(item => item.textContent.trim());
+
+    // Get event date
+    const workoutDate = document.getElementById('workoutDate').value;
+
+    // Save data to sessionStorage
+    sessionStorage.setItem('selectedExercises', JSON.stringify(selectedExercises));
+    sessionStorage.setItem('workoutDate', workoutDate);
+
+    // Redirect to the calendar page
+    window.location.href = 'Calendar.html';
+}
+        </script>
+    </div>
 </body>
+
 </html>
