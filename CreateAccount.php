@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form id="CreateAccount" action="Website.php?mode=createAccount" method="post" style="border: 1px solid #ccc">
+<form id="CreateAccount" action="index.php?mode=createAccount" method="post" style="border: 1px solid #ccc">
   <div class="container">
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
