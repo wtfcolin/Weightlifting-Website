@@ -37,7 +37,7 @@
     var repeatPassword = document.getElementById('psw-repeat').value;
 
     var emailValid = email.includes('@uww'); // Check if email contains '@uww'
-    var passwordValid = passwordLengthValid && !password.toLowerCase().includes('select'); // Ensure password doesn't contain 'select'
+    var passwordValid = password.length >= 8 && !password.toLowerCase().includes('select'); // Ensure password doesn't contain 'select'
 
     var errorMessage = 'Following items do not meet criteria:\n';
 
