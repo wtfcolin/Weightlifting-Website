@@ -374,12 +374,16 @@
                         if (checkboxes[i].checked) {
                             const exerciseItem = document.createElement('li');
                             const removeButton = document.createElement('span');
-                            removeButton.className = 'remove-button';
-                            removeButton.textContent = 'Remove';
+                            //removeButton.className = 'remove-button';
+                            //removeButton.textContent = 'Remove';
                             removeButton.addEventListener('click', function () {
                                 this.parentElement.remove();
                             });
-                            exerciseItem.textContent = checkboxes[i].value;
+                            // Extract text content without the "Remove" button text
+                            const exerciseText = checkboxes[i].parentNode.textContent.trim();
+                            exerciseItem.innerText = exerciseText;
+
+                            // Append the exercise item and the remove button
                             exerciseItem.appendChild(removeButton);
                             selectedExercisesList.appendChild(exerciseItem);
                         }
