@@ -59,7 +59,7 @@
     }
 
     //document.getElementById('CreateAccount').submit(); // If everything is valid, submit the form
-    //window.location.href = "loginform.php";
+    window.location.href = "loginform.php";
   }
 </script>
 </body>
