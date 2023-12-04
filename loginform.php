@@ -23,7 +23,7 @@
         <!-- Button to create account page -->
         <p class="text-center">Don't have an account?</p>
         <div class="text-center">
-            <a href="create_account.php" class="btn btn-outline-primary">Create Account</a>
+            <a href="CreateAccount.php" class="btn btn-outline-primary">Create Account</a>
         </div>
     </div>
 </body>
