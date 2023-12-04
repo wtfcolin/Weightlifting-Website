@@ -14,6 +14,14 @@ body {
     margin-top: 20px;
 }
 
+#CreateAccount {
+    background-color: #400a53; /* Warhawk Purple */
+    color: #ffffff; /* Warhawk White */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
 #dashboard {
     display: none;
     background-color: #ffffff; /* Warhawk White */
