@@ -26,33 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "The only bad workout is the one that didn't happen.",
         "Strength does not come from the body. It comes from the will.",
         "Your body can stand almost anything. It's your mind that you have to convince.",
-        "Train like a beast, look like a beauty.",
-        "Sweat is just fat crying.",
-        "Your body hears everything your mind says. Stay positive.",
-        "Wake up with determination, go to bed with satisfaction.",
-        "The only limits that exist are the ones you place on yourself.",
-        "Fitness is not about being better than someone else; it's about being better than you used to be.",
-        "Success is no accident. It is hard work, perseverance, learning, studying, sacrifice, and most of all, love of what you are doing.",
-        "The pain you feel today will be the strength you feel tomorrow.",
-        "Fitness is not a destination; it is a journey.",
-        "Don't wish for a good body, work for it.",
-        "Your health is an investment, not an expense.",
-        "Make your body the sexiest outfit you own.",
-        "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.",
-        "Workout because you love your body, not because you hate it.",
-        "The only way to do great work is to love what you do.",
-        "Strive for progress, not perfection.",
-        "Your body can do anything. It's your brain you have to convince.",
-        "You are one workout away from a good mood.",
-        "Fall in love with taking care of yourself: mind, body, and spirit.",
-        "The difference between try and triumph is just a little umph!",
-        "Excuses don't burn calories.",
-        "It's not about having time; it's about making time.",
-        "Your speed doesn't matter; forward is forward.",
-        "The only bad workout is the one that didn't happen.",
-        "Do it now. Sometimes 'later' becomes 'never.'",
-        "Be stronger than your excuses.",
-        "Your body is a reflection of your lifestyle."
+        // ... (add the rest of your quotes)
     ];
 
     // Function to get a random quote from the array
@@ -61,21 +35,25 @@ document.addEventListener('DOMContentLoaded', function () {
         return quotes[randomIndex];
     }
 
-    // Function to update the HTML with a random quote
-    function updateQuote() {
-        const selectedQuote = getRandomQuote(quotes);
-        const inspirationalMessageDiv = document.getElementById('inspirationalQuotes');
+    // Function to update all div elements with the same quote
+    function updateQuotes() {
+        const inspirationalMessageDivs = document.querySelectorAll('.inspirational-Quotes');
 
-        if (inspirationalMessageDiv) {
-            inspirationalMessageDiv.innerHTML = `<h2><strong>Quote of the day:</strong> ${selectedQuote}</h2>`;
+        if (inspirationalMessageDivs.length > 0) {
+            const selectedQuote = getRandomQuote(quotes);
+
+            inspirationalMessageDivs.forEach(div => {
+                div.innerHTML = `<h2><strong>Willy Warhawk Quote of the Day:</strong> ${selectedQuote}</h2>`;
+            });
         } else {
-            console.error('Element with id "inspirationalQuotes" not found.');
+            console.error('No elements with class "inspirational-quote" found.');
         }
     }
 
-    // Call the function to update the quote when the DOM is loaded
-    updateQuote();
+    // Call the function to update the quotes when the DOM is loaded
+    updateQuotes();
 });
+
 
 
 
