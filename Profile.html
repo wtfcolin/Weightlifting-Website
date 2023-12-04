@@ -55,8 +55,46 @@
            
             <!-- Add more workout statistics as needed -->
         </div>
+
+    <!--Bio-->
+    <div id="bio">
+    <h2>Bio:</h2>
+    <div id="displayInfo"></div>
+    <textarea id="bio" rows="4" cols="50" placeholder="Enter Bio Here"></textarea>
+    <button onclick="saveInfo()">Save Bio</button>
+
+
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Contact Info-->
+    <div id="Contact-Info"> 
+        <label for="Contact-Info">
+        <h2>Contact Information:</h2>
+        <p>Phone: WilleWarhawk in numbers</p>
+        <p>Email: EpicFortniteMoment@gmail.com</p>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+
+function saveInfo() {
+      var bioText = document.getElementById('bio').value;
+      localStorage.setItem('savedBio', bioText);
+      displaySavedInfo();
+    }
+
+    function displaySavedInfo() {
+      var savedBio = localStorage.getItem('savedBio');
+      var displayInfo = document.getElementById('displayInfo');
+      
+      if (savedBio) {
+        displayInfo.getElementById('bio') = "<p>Saved Bio:</p><p>" + savedBio + "</p>";
+      } else {
+        displayInfo.innerHTML = "<p>No bio saved.</p>";
+      }
+    }
+    displaySavedInfo();
+    </script>
 </body>
 </html>
+
