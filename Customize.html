@@ -325,6 +325,9 @@
                 <ul id="selected-exercises-list">
                     <!-- Selected exercises will be added dynamically here -->
                 </ul>
+                <label for="workoutDate">Workout Date:</label>
+                <input type="date" id="workoutDate">
+                <button id="submitBtn">Add to Calendar</button>
             </div>
         </div>
 
@@ -383,6 +386,27 @@
                     }
                 }
             });
+            document.addEventListener('DOMContentLoaded', function () {
+            const submitButton = document.getElementById('submitBtn');
+            submitButton.addEventListener('click', saveAndRedirect);
+        });
+
+        function saveAndRedirect() {
+    // Get selected exercises
+    const selectedExercisesList = document.getElementById('selected-exercises-list');
+    const selectedExercisesItems = selectedExercisesList.querySelectorAll('li');
+    const selectedExercises = Array.from(selectedExercisesItems).map(item => item.textContent.trim());
+
+    // Get event date
+    const workoutDate = document.getElementById('workoutDate').value;
+
+    // Save data to sessionStorage
+    sessionStorage.setItem('selectedExercises', JSON.stringify(selectedExercises));
+    sessionStorage.setItem('workoutDate', workoutDate);
+
+    // Redirect to the calendar page
+    window.location.href = 'Calendar.html';
+}
         </script>
     </div>
 </body>
