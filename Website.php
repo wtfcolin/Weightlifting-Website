@@ -31,6 +31,13 @@
             <a href="Profile.html">Profile</a>
         </div>
 
+      <div id="calendar">
+          <!-- Calendar content will go here -->
+
+          <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css' rel='stylesheet' />
+          <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js'></script>
+      </div>
+
     </div>
     <script src="WebsiteFunction.js"></script>
 </body>
