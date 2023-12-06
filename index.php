@@ -55,7 +55,7 @@
       // Make sure to use prepared statements to prevent SQL injection
 
       // Your SQL query to insert the data into your database table
-      $sql = "INSERT INTO your_table_name (username, password) VALUES (:username, :password)";
+      $sql = "INSERT INTO login (username, password) VALUES (:username, :password)";
 
       // Execute the query using prepared statements
       // (Assuming you're using PDO for database interactions)
