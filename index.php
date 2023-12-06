@@ -34,11 +34,13 @@
               if ($loginSuccessful) {
                   $_SESSION["username"] = $username;
                   $_SESSION["name"] = $username;
-                  echo "<p>Logged in as {$_SESSION["name"]}</p>";
+
+                  header("Location: Website.html");
+                  exit();
               } else {
-                  echo "<p>Invalid user</p>";
-                  include("loginform.php");
-              }
+                echo "<p>Invalid user</p>";
+                include("loginform.php");
+                }
           } else {
               include("loginform.php");
           }
