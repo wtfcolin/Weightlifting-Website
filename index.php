@@ -60,10 +60,10 @@
       // Execute the query using prepared statements
       // (Assuming you're using PDO for database interactions)
       // Replace 'your_connection_parameters' with your actual database connection parameters
-      $pdo = new PDO('mysql:host=localhost;dbname=lifting-app', 'your_username', 'your_password');
+      $pdo = new PDO('mysql:host=localhost;dbname=lifting-app', 'carlsonca20', 'cc7893');
 
       $stmt = $pdo->prepare($sql);
-      $stmt->bindParam(':username', $email);
+      $stmt->bindParam(':username', $username);
       $stmt->bindParam(':password', $password);
 
       if ($stmt->execute()) {
