@@ -12,6 +12,15 @@
   <link rel="stylesheet" href="WebsiteLook.css">
 </head>
 <body>
+  <div id="login-page" class="container">
+  <div id="profile-picture">
+      <img src="WhitewaterLogo.webp" alt="Profile Picture" class="img-fluid rounded-circle" width="150">
+  </div>
+  <h1>Welcome to the Weightlifting App</h1>
+  <div class="inspirational-Quotes">
+
+  </div>
+    
     <div id = "login-page" class="container">
         <form method="post" action="index.php?mode=login" class="form-signin">
             <h3>Sign in</h3>
