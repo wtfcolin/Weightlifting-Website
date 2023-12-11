@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Your body can stand almost anything. It's your mind that you have to convince.",
         "Train like a beast, look like a beauty.",
         "Sweat is just fat crying.",
+        "If you cant bench 225, keep trying we have all been there and you just need to keep pushin",
         "Your body hears everything your mind says. Stay positive.",
         "Wake up with determination, go to bed with satisfaction.",
         "The only limits that exist are the ones you place on yourself.",
@@ -279,19 +280,27 @@ document.addEventListener('DOMContentLoaded', function () {
 // Get all tab links
 const tabLinks = document.querySelectorAll('.tab-navigation a');
 
-// Add a click event listener to each tab link
-tabLinks.forEach(tabLink => {
-    tabLink.addEventListener('click', function (event) {
-        // Prevent the default link behavior
-        event.preventDefault();
+//tab opening function
 
-        // Get the href attribute of the clicked tab
-        const href = this.getAttribute('href');
+function openTab(tabName) {
+    // Hide all tab contents
+    var tabContents = document.getElementsByClassName("tabcontent");
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = "none";
+    }
 
-        // Load the content of the linked HTML file into the dashboard
-        loadHTMLContent(href);
-    });
-});
+    // Deactivate all tabs
+    var tabLinks = document.getElementsByClassName("tablinks");
+    for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+    }
+
+    // Show the selected tab content
+    document.getElementById(tabName).style.display = "block";
+
+    // Activate the clicked tab
+    event.currentTarget.className += " active";
+}
 
 // Function to load HTML content into the dashboard
 function loadHTMLContent(href) {
@@ -329,48 +338,3 @@ function saveWorkoutData(selectedExercises) {
     // Send the request
     xhr.send(data);
 }
-document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        events: function (info, successCallback, failureCallback) {
-            // Retrieve saved data from sessionStorage
-            const selectedExercises = JSON.parse(sessionStorage.getItem('selectedExercises'));
-            const workoutDate = sessionStorage.getItem('workoutDate');
-
-            // Create events based on the retrieved data
-            var events = [];
-            if (selectedExercises && workoutDate) {
-                events.push({
-                    title: 'Scheduled Workout'/* + selectedExercises.join(', ')*/,
-                    start: workoutDate,
-                    end: workoutDate
-                });
-            }
-
-            // Callback to FullCalendar with the events
-            successCallback(events);
-        }
-    });
-
-    calendar.render();
-});
-document.getElementById('addWorkoutButton').addEventListener('click', function () {
-        // Retrieve saved data from sessionStorage
-        const selectedExercises = JSON.parse(sessionStorage.getItem('selectedExercises'));
-        const workoutDate = sessionStorage.getItem('workoutDate');
-
-        // If the data exists, add it to the calendar
-        if (selectedExercises && workoutDate) {
-            calendar.addEvent({
-                title: 'Scheduled Workout: ' + selectedExercises.join(', '),
-                start: workoutDate,
-                end: workoutDate
-            });
-
-            // Optionally, you can clear the sessionStorage after adding to the calendar
-            sessionStorage.removeItem('selectedExercises');
-            sessionStorage.removeItem('workoutDate');
-        } else {
-            alert('No workout data found. Please customize your workout first.');
-        }})
