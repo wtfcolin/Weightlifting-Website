@@ -329,3 +329,48 @@ function saveWorkoutData(selectedExercises) {
     // Send the request
     xhr.send(data);
 }
+document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: function (info, successCallback, failureCallback) {
+            // Retrieve saved data from sessionStorage
+            const selectedExercises = JSON.parse(sessionStorage.getItem('selectedExercises'));
+            const workoutDate = sessionStorage.getItem('workoutDate');
+
+            // Create events based on the retrieved data
+            var events = [];
+            if (selectedExercises && workoutDate) {
+                events.push({
+                    title: 'Scheduled Workout'/* + selectedExercises.join(', ')*/,
+                    start: workoutDate,
+                    end: workoutDate
+                });
+            }
+
+            // Callback to FullCalendar with the events
+            successCallback(events);
+        }
+    });
+
+    calendar.render();
+});
+document.getElementById('addWorkoutButton').addEventListener('click', function () {
+        // Retrieve saved data from sessionStorage
+        const selectedExercises = JSON.parse(sessionStorage.getItem('selectedExercises'));
+        const workoutDate = sessionStorage.getItem('workoutDate');
+
+        // If the data exists, add it to the calendar
+        if (selectedExercises && workoutDate) {
+            calendar.addEvent({
+                title: 'Scheduled Workout: ' + selectedExercises.join(', '),
+                start: workoutDate,
+                end: workoutDate
+            });
+
+            // Optionally, you can clear the sessionStorage after adding to the calendar
+            sessionStorage.removeItem('selectedExercises');
+            sessionStorage.removeItem('workoutDate');
+        } else {
+            alert('No workout data found. Please customize your workout first.');
+        }})
