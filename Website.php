@@ -40,6 +40,9 @@
       include("loginform.php");
       exit();
   }
+  else{
+    $loginSuccessful = true;
+  }
 
   switch ($mode) {
       case 'login':
@@ -52,7 +55,7 @@
               if ($loginSuccessful) {
                   $_SESSION["username"] = $username;
                 
-                  //header("Location: Website.php");
+                  header("Location: Website.php");
                   //include("Website.php");
                   exit();
               } else {
@@ -66,9 +69,10 @@
 
     case "createAccount":
       // Retrieve the form data
-      $email = $_POST['username'];
+      $email = $_POST['email'];
       $password = $_POST['password'];
 
+      $username = strstr($email, '@', true);
       // Implement your database connection here
       // Make sure to use prepared statements to prevent SQL injection
 
@@ -104,8 +108,8 @@
     <script src="WebsiteFunction.js"></script>
 
     <!-- Dashboard Page -->
-    <div id="dashboard" style="display: flex;" class="container">
-        <h1>Welcome $username</h1>
+    <div id="dashboard" style="display: block;" class="container">
+        <h1>Welcome <?php echo isset($_SESSION["username"]) ? $_SESSION["username"] : ''; ?></h1>
         <img src="willyMotivationPhoto.jpeg" alt="Willy Picture" class="img-fluid rounded-circle" width="150">
         <div class="inspirational-Quotes">
 
