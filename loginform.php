@@ -22,7 +22,7 @@
   </div>
     
     <div id = "login-page" class="container">
-        <form method="post" action="index.php?mode=login" class="form-signin">
+        <form method="post" action="Website.php?mode=login" class="form-signin">
             <h3>Sign in</h3>
             <input type="text" class="form-control" name="username" placeholder="username" required autofocus><br>
             <input type="password" class="form-control" name="password" placeholder="password" required>
