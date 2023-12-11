@@ -36,10 +36,10 @@
     <div class="container">
         <h1 class="text-center">User Profile</h1>
         <div class="tab-navigation">
-            <a href="Customize.html">Customize Workouts</a>
-            <a href="Calendar.html">Calendar</a>
-            <a href="Main.html">Home</a>
-            <a href="Profile.html">Profile</a>
+        <a href="Customize.html"onclick="openTab('Customize.html')">Customize Workouts</a>
+        <a href="Calendar.html" onclick="openTab('Calendar.html')">Calendar</a>
+        <a href="Website.php" onclick="openTab('Website.php')">Home</a>
+        <a href="Profile.php" onclick="openTab('Profile.php')">Profile</a>
         </div>
         <!-- Profile Information -->
         <div id="profile-info">
