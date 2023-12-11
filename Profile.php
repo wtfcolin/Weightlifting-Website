@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile - Workout App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="WebsiteLook.css">
     <style>
         body {
@@ -34,40 +35,65 @@
 <body>
     <div class="container">
         <h1 class="text-center">User Profile</h1>
-
+        <div class="tab-navigation">
+            <a href="Customize.html">Customize Workouts</a>
+            <a href="Calendar.html">Calendar</a>
+            <a href="Main.html">Home</a>
+            <a href="Profile.html">Profile</a>
+        </div>
         <!-- Profile Information -->
         <div id="profile-info">
             <div id="profile-picture">
-                <img src="profile-picture.jpg" alt="Profile Picture" class="img-fluid rounded-circle" width="150">
+                <img src="WhitewaterLogo.webp" alt="Profile Picture" class="img-fluid rounded-circle" width="150">
             </div>
-            <h2 class="mt-3">John Doe</h2>
-            <p>Email: john.doe@example.com</p>
-            <p>Age: 25</p>
-            <p>Location: City, Country</p>
-            <!-- Add more user information as needed -->
+            <h2 class="mt-3">Username</h2>
+    
         </div>
 
         <!-- Workout Statistics -->
         <div id="workout-stats">
-            <h2>Workout Statistics</h2>
-            <p>Total Workouts: 50</p>
-            <p>Total Hours: 25</p>
-            <p>Average Calories Burned: 300</p>
+           
             <!-- Add more workout statistics as needed -->
         </div>
+
+    <!--Bio-->
+    <div id="bio">
+    <h2>Bio:</h2>
+    <div id="displayInfo"></div>
+    <textarea id="bio" rows="4" cols="50" placeholder="Enter Bio Here"></textarea>
+    <button onclick="saveInfo()">Save Bio</button>
+
+
     </div>
 
-    <?php
-    //-- Logout Button---
-    case "logout":
-        // Remove all the session variables and display the login form
-        session_unset();
-        setcookie(session_name(), '', time()-1000, '/');
-        $_SESSION = array();
-        include("loginform.php");
-        break;
-  ?>
+    <!-- Contact Info-->
+    <div id="Contact-Info"> 
+        <label for="Contact-Info">
+        <h2>Contact Information:</h2>
+        <p>Phone: WilleWarhawk in numbers</p>
+        <p>Email: EpicFortniteMoment@gmail.com</p>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+
+function saveInfo() {
+      var bioText = document.getElementById('bio').value;
+      localStorage.setItem('savedBio', bioText);
+      displaySavedInfo();
+    }
+
+    function displaySavedInfo() {
+      var savedBio = localStorage.getItem('savedBio');
+      var displayInfo = document.getElementById('displayInfo');
+      
+      if (savedBio) {
+        displayInfo.getElementById('bio') = "<p>Saved Bio:</p><p>" + savedBio + "</p>";
+      } else {
+        displayInfo.innerHTML = "<p>No bio saved.</p>";
+      }
+    }
+    displaySavedInfo();
+    </script>
 </body>
 </html>
