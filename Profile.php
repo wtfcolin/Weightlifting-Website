@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile - Workout App</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="WebsiteLook.css">
     <style>
         body {
@@ -33,14 +32,17 @@
     </style>
 </head>
 <body>
+    <nav>
+        <div class="tab-navigation">
+            <a href="Customize.html"onclick="openTab('Customize.html')">Customize Workouts</a>
+            <a href="Calendar.html" onclick="openTab('Calendar.html')">Calendar</a>
+            <a href="Website.php" onclick="openTab('Website.php')">Home</a>
+            <a href="Profile.php" onclick="openTab('Profile.php')">Profile</a>
+            <a href="loginform.php" onclick="openTab('loginform.php')">Logout</a>
+        </div>
+    </nav>
     <div class="container">
         <h1 class="text-center">User Profile</h1>
-        <div class="tab-navigation">
-        <a href="Customize.html"onclick="openTab('Customize.html')">Customize Workouts</a>
-        <a href="Calendar.html" onclick="openTab('Calendar.html')">Calendar</a>
-        <a href="Website.php" onclick="openTab('Website.php')">Home</a>
-        <a href="Profile.php" onclick="openTab('Profile.php')">Profile</a>
-        </div>
         <!-- Profile Information -->
         <div id="profile-info">
             <div id="profile-picture">
