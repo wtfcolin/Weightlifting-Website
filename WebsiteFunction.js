@@ -1,3 +1,4 @@
+// Function to send login credentials to database 
 function login() {
     // Check the credentials (you will need to implement this)
     const username = document.getElementById("username").value;
@@ -12,14 +13,16 @@ function login() {
     }
 }
 
+// Function to validate login credentials
 function isValidLogin(username, password) {
     // Implement your own validation logic here.
 
     // You might check against a database or use a mock data store.
-    
+
     return true; // For demonstration purposes, return true.
 }
 
+// Function to generate random quote
 document.addEventListener('DOMContentLoaded', function () {
     // Array of inspirational quotes
     const quotes = [
@@ -28,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Your body can stand almost anything. It's your mind that you have to convince.",
         "Train like a beast, look like a beauty.",
         "Sweat is just fat crying.",
+        "If you cant bench 225, keep trying we have all been there and you just need to keep pushin",
         "Your body hears everything your mind says. Stay positive.",
         "Wake up with determination, go to bed with satisfaction.",
         "The only limits that exist are the ones you place on yourself.",
@@ -69,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectedQuote = getRandomQuote(quotes);
 
             inspirationalMessageDivs.forEach(div => {
-                div.innerHTML = `<h2><strong>Willy Warhawk Quote of the Day:</strong> ${selectedQuote}</h2>`;
+                div.innerHTML = `<h2>${selectedQuote}</h2>`;
             });
         } else {
             console.error('No elements with class "inspirational-quote" found.');
@@ -80,15 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
     updateQuotes();
 });
 
-
-
-
-
+// Function to fill calendar with saved workouts
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth', // You can choose the default view
-        
+
         events: [
             {
                 title: 'Workout Session',
@@ -276,59 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
     calendar.render();
 });
 
-// Get all tab links
-const tabLinks = document.querySelectorAll('.tab-navigation a');
-
-// Add a click event listener to each tab link
-tabLinks.forEach(tabLink => {
-    tabLink.addEventListener('click', function (event) {
-        // Prevent the default link behavior
-        event.preventDefault();
-
-        // Get the href attribute of the clicked tab
-        const href = this.getAttribute('href');
-
-        // Load the content of the linked HTML file into the dashboard
-        loadHTMLContent(href);
-    });
-});
-
-// Function to load HTML content into the dashboard
-function loadHTMLContent(href) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', href, true);
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            // Replace the content of the dashboard with the loaded HTML content
-            document.getElementById('dashboard').innerHTML = xhr.responseText;
-        }
-    };
-
-    xhr.send();
-}
-
-function saveWorkoutData(selectedExercises) {
-    // Assuming you have a PHP script named save_workout.php
-    const url = 'save_workout.php';
-
-    // Send selected exercises data to the server
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Handle the server's response, if needed
-            console.log(xhr.responseText);
-        }
-    };
-
-    // Prepare data to send to the server
-    const data = 'exercises=' + JSON.stringify(selectedExercises);
-
-    // Send the request
-    xhr.send(data);
-}
+//
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -355,22 +304,87 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 });
+
+// 
 document.getElementById('addWorkoutButton').addEventListener('click', function () {
-        // Retrieve saved data from sessionStorage
-        const selectedExercises = JSON.parse(sessionStorage.getItem('selectedExercises'));
-        const workoutDate = sessionStorage.getItem('workoutDate');
+    // Retrieve saved data from sessionStorage
+    const selectedExercises = JSON.parse(sessionStorage.getItem('selectedExercises'));
+    const workoutDate = sessionStorage.getItem('workoutDate');
 
-        // If the data exists, add it to the calendar
-        if (selectedExercises && workoutDate) {
-            calendar.addEvent({
-                title: 'Scheduled Workout: ' + selectedExercises.join(', '),
-                start: workoutDate,
-                end: workoutDate
-            });
+    // If the data exists, add it to the calendar
+    if (selectedExercises && workoutDate) {
+        calendar.addEvent({
+            title: 'Scheduled Workout: ' + selectedExercises.join(', '),
+            start: workoutDate,
+            end: workoutDate
+        });
 
-            // Optionally, you can clear the sessionStorage after adding to the calendar
-            sessionStorage.removeItem('selectedExercises');
-            sessionStorage.removeItem('workoutDate');
-        } else {
-            alert('No workout data found. Please customize your workout first.');
-        }})
+        // Optionally, you can clear the sessionStorage after adding to the calendar
+        sessionStorage.removeItem('selectedExercises');
+        sessionStorage.removeItem('workoutDate');
+    } else {
+        alert('No workout data found. Please customize your workout first.');
+    }
+})
+
+// Variable to watch tab navigation clicks
+const tabLinks = document.querySelectorAll('.tab-navigation a');
+
+// Function to watch 
+function openTab(tabName) {
+    // Hide all tab contents
+    var tabContents = document.getElementsByClassName("tabcontent");
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = "none";
+    }
+
+    // Deactivate all tabs
+    var tabLinks = document.getElementsByClassName("tablinks");
+    for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+    }
+
+    // Show the selected tab content
+    document.getElementById(tabName).style.display = "block";
+
+    // Activate the clicked tab
+    event.currentTarget.className += " active";
+}
+
+// Function to load HTML content into the dashboard
+function loadHTMLContent(href) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', href, true);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Replace the content of the dashboard with the loaded HTML content
+            document.getElementById('dashboard').innerHTML = xhr.responseText;
+        }
+    };
+
+    xhr.send();
+}
+
+// Function to save selected exercises
+function saveWorkoutData(selectedExercises) {
+    // Assuming you have a PHP script named save_workout.php
+    const url = 'save_workout.php';
+
+    // Send selected exercises data to the server
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Handle the server's response, if needed
+            console.log(xhr.responseText);
+        }
+    };
+
+    // Prepare data to send to the server
+    const data = 'exercises=' + JSON.stringify(selectedExercises);
+
+    // Send the request
+    xhr.send(data);
+}
