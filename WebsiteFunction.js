@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+/*
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -272,10 +272,11 @@ document.addEventListener('DOMContentLoaded', function () {
             },
 
         ],
+        
     });
     calendar.render();
 });
-
+*/
 // Get all tab links
 const tabLinks = document.querySelectorAll('.tab-navigation a');
 
@@ -349,14 +350,20 @@ function renderCalendar(events) {
         return;
     }
 
+    // Clear previous content in the calendar container
+    calendarContainer.innerHTML = '';
+
     // Loop through each event and create elements
     events.forEach(event => {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'calendar-event';
 
-        const eventDate = document.createElement('p');
-        eventDate.textContent = `Date: ${event.date}`;
+        // Create a header for the event day
+        const eventDayHeader = document.createElement('h3');
+        eventDayHeader.textContent = `Scheduled Workout - ${event.date}`;
+        eventDiv.appendChild(eventDayHeader);
 
+        // Create a list for exercises
         const exercisesList = document.createElement('ul');
         event.exercises.forEach(exercise => {
             const exerciseItem = document.createElement('li');
@@ -364,9 +371,10 @@ function renderCalendar(events) {
             exercisesList.appendChild(exerciseItem);
         });
 
-        eventDiv.appendChild(eventDate);
+        // Append the exercises list to the event div
         eventDiv.appendChild(exercisesList);
 
+        // Append the event div to the calendar container
         calendarContainer.appendChild(eventDiv);
     });
 }
