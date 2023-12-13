@@ -1,14 +1,55 @@
 body {
-    background-color: #f8f9fa; /* Bootstrap default background color */
+    background-color: #f8f9fa;
+    /* Bootstrap default background color */
 }
 
 .navbar {
-    background-color: #400a53; /* Warhawk Purple */
+    background-color: #400a53;
+    /* Warhawk Purple */
 }
 
+.inspirational-Quotes {
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: #ffffff;
+    background-color: #6e1b94;
+    border: 8px solid #6e1b94;
+    border-radius: 20px;
+}
+
+
 #login-page {
-    background-color: #400a53; /* Warhawk Purple */
-    color: #ffffff; /* Warhawk White */
+    background-color: #400a53;
+    /* Warhawk Purple */
+    color: #ffffff;
+    /* Warhawk White */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#login-text-centered {
+    text-align: center;
+}
+
+#CreateAccount {
+    background-color: #400a53;
+    /* Warhawk Purple */
+    color: #ffffff;
+    /* Warhawk White */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#Login {
+    background-color: #400a53;
+    /* Warhawk Purple */
+    color: #ffffff;
+    /* Warhawk White */
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
@@ -16,28 +57,41 @@ body {
 
 #dashboard {
     display: none;
-    background-color: #ffffff; /* Warhawk White */
+    background-color: #ffffff;
+    /* Warhawk White */
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
 }
 
 .tab-navigation {
-    background-color: #400a53; /* Warhawk Purple */
+    background-color: #400a53;
+    /* Warhawk Purple */
     padding: 10px;
     border-radius: 5px;
     margin-top: 20px;
 }
 
 .tab-navigation a {
-    color: #ffffff; /* Warhawk White */
+    color: #ffffff;
+    /* Warhawk White */
     text-decoration: none;
     padding: 10px 20px;
     margin: 0 10px;
     border-radius: 5px;
-    background-color: #6e1b94; /* Slightly lighter shade of Warhawk Purple */
+    background-color: #6e1b94;
+    /* Slightly lighter shade of Warhawk Purple */
+    position: relative;
+}
+
+.tab-navigation a[href="loginform.php"] {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    float: right;
 }
 
 .tab-navigation a:hover {
-    background-color: #501169; /* Darker shade of Warhawk Purple */
+    background-color: #501169;
+    /* Darker shade of Warhawk Purple */
 }
