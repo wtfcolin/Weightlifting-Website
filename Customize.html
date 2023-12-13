@@ -396,35 +396,35 @@
             document.addEventListener('DOMContentLoaded', function () {
             const submitButton = document.getElementById('submitBtn');
             submitButton.addEventListener('click', saveAndRedirect);
-        });
+});
 
-        function saveAndRedirect() {
-            // Get selected exercises
-            const selectedExercisesList = document.getElementById('selected-exercises-list');
-            const selectedExercisesItems = selectedExercisesList.querySelectorAll('li');
-            const selectedExercises = Array.from(selectedExercisesItems).map(item => item.textContent.trim());
+function saveAndRedirect() {
+    // Get selected exercises
+    const selectedExercisesList = document.getElementById('selected-exercises-list');
+    const selectedExercisesItems = selectedExercisesList.querySelectorAll('li');
+    const selectedExercises = Array.from(selectedExercisesItems).map(item => item.textContent.trim());
 
-            // Get event date
-            const workoutDate = document.getElementById('workoutDate').value;
+    // Get event date
+    const workoutDate = document.getElementById('workoutDate').value;
 
-            // Get existing events from local storage
-            const existingEvents = JSON.parse(localStorage.getItem('workoutEvents')) || [];
+    // Get existing events from local storage
+    const existingEvents = JSON.parse(localStorage.getItem('workoutEvents')) || [];
 
-            // Create a new event object
-            const newEvent = {
-                exercises: selectedExercises,
-                date: workoutDate,
-            };
+    // Create a new event object
+    const newEvent = {
+        exercises: selectedExercises,
+        date: workoutDate,
+    };
 
-            // Add the new event to the existing events
-            existingEvents.push(newEvent);
+    // Add the new event to the existing events
+    existingEvents.push(newEvent);
 
-            // Save updated events to local storage
-            localStorage.setItem('workoutEvents', JSON.stringify(existingEvents));
+    // Save updated events to local storage
+    localStorage.setItem('workoutEvents', JSON.stringify(existingEvents));
 
-            // Redirect to the calendar page
-            window.location.href = 'Calendar.html';
-        }
+    // Redirect to the calendar page
+    window.location.href = 'Calendar.html';
+}
         </script>
     </div>
 </body>
