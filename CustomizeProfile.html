@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Profile - Workout App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="WebsiteLook.css">
+    <!-- Add any additional styles for customization if needed -->
+</head>
+<body>
+    <div id="login-page" class="container">
+        <h1 class="text-center">Customize Profile</h1>
+        <!-- Profile Information Form -->
+        <form id="profileForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter Bio Here"></textarea>
+            <br>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <br>
+            <button type="button" onclick="saveProfile()">Save Profile</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add any additional scripts for customization if needed -->
+    <script>
+        function saveProfile() {
+            // Get form data
+            var formData = new FormData(document.getElementById('profileForm'));
+
+            // Save data to local storage
+            for (var pair of formData.entries()) {
+                localStorage.setItem(pair[0], pair[1]);
+            }
+
+            // Redirect to Profile.php
+            window.location.href = 'Profile.php';
+        }
+    </script>
+</body>
+</html>
