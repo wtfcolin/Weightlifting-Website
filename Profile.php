@@ -73,7 +73,7 @@
         <p id="displayPhone"></p>
         <p id="displayEmail"></p>
     </div>
-    <button onclick="navigateToCustomize()">Customize</button>
+    <button class="btn btn-lg btn-primary btn-block" onclick="navigateToCustomize()">Customize</button>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
